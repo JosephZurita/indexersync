@@ -1,0 +1,31 @@
+# docker-compose.yml
+version: "3.8"
+
+services:
+  indexersync:
+    # Build the image from your local Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    # Give the container a stable name
+    container_name: main
+
+    # Pass in all the env-vars from .env
+    env_file:
+      - .env
+
+    # If you ever need to mount a config dir:
+    # volumes:
+    #   - ./config:/config:ro
+
+    # We don't expose ports, it's a CLI job
+    # No restart policy—this runs once and exits
+    restart: "no"
+
+    # Optional: limit log size on disk
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

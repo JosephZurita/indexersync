@@ -1,0 +1,5 @@
+# Prevent local files from bloating your image
+.git
+.gitignore
+.env
+*.md

@@ -1,0 +1,17 @@
+# Go build outputs
+indexersync
+
+# Dependency directories
+vendor/
+
+# Environment files
+.env
+
+# Editor/IDE files
+*.swp
+*.swo
+*.DS_Store
+
+# Docker artifacts
+Dockerfile*
+EOF
