@@ -11,7 +11,3 @@ vendor/
 *.swp
 *.swo
 *.DS_Store
-
-# Docker artifacts
-Dockerfile*
-EOF
