@@ -23,6 +23,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_PAT }}
 
+      # ↓ lowercase via bash/tr and expose to subsequent steps ↓
+      - name: Lowercase owner
+        run: |
+          echo "OWNER_LOWER=$(echo $GITHUB_REPOSITORY_OWNER \
+            | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
@@ -30,4 +36,4 @@ jobs:
           file: Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/indexersync:latest
+            ghcr.io/${{ env.OWNER_LOWER }}/indexersync:latest
